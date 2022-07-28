@@ -1,4 +1,5 @@
 import 'package:ancora_artes/src/config/custom_colors.dart';
+import 'package:ancora_artes/src/pages/common_widgets/app_logo_widget.dart';
 import 'package:ancora_artes/src/pages/common_widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:ancora_artes/src/config/app_data.dart' as app_data;
@@ -20,9 +21,8 @@ class _ProfileTabState extends State<ProfileTab> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Image.asset(
-              'assets/logos/logoAncoraResina.png',
-              width: 100,
+            const AppLogoWidget(
+              widthLogo: 100,
             ),
             /* Icon(
               Icons.person_outlined,

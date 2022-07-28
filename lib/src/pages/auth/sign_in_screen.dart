@@ -1,4 +1,5 @@
 import 'package:ancora_artes/src/config/custom_colors.dart';
+import 'package:ancora_artes/src/pages/common_widgets/app_logo_widget.dart';
 import 'package:ancora_artes/src/pages/common_widgets/custom_text_field.dart';
 import 'package:ancora_artes/src/pages/auth/sign_up_screen.dart';
 import 'package:ancora_artes/src/pages/base/base_screen.dart';
@@ -26,7 +27,7 @@ class SignInScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // Nome do app
-                  Image.asset('assets/logos/logoAncoraResina.png'),
+                  const AppLogoWidget(),
 
                   // Animação das categorias
                   SizedBox(

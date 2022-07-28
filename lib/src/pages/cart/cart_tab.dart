@@ -1,6 +1,7 @@
 import 'package:ancora_artes/src/config/custom_colors.dart';
 import 'package:ancora_artes/src/models/cart_item_model.dart';
 import 'package:ancora_artes/src/pages/cart/components/cart_tile.dart';
+import 'package:ancora_artes/src/pages/common_widgets/app_logo_widget.dart';
 import 'package:ancora_artes/src/pages/common_widgets/payment_dialog.dart';
 import 'package:ancora_artes/src/services/utils_services.dart';
 import 'package:flutter/material.dart';
@@ -47,9 +48,8 @@ class _CartTabState extends State<CartTab> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Image.asset(
-              'assets/logos/logoAncoraResina.png',
-              width: 100,
+            const AppLogoWidget(
+              widthLogo: 100,
             ),
             /* Icon(
               Icons.shopping_cart_outlined,

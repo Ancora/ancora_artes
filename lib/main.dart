@@ -1,5 +1,5 @@
 import 'package:ancora_artes/src/config/custom_colors.dart';
-import 'package:ancora_artes/src/pages/auth/sign_in_screen.dart';
+import 'package:ancora_artes/src/pages/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: CustomColors.customBlueMedium.shade600,
       ),
       debugShowCheckedModeBanner: false,
-      home: const SignInScreen(),
+      home: const SplashScreen(),
     );
   }
 }

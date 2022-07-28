@@ -1,4 +1,5 @@
 import 'package:ancora_artes/src/config/custom_colors.dart';
+import 'package:ancora_artes/src/pages/common_widgets/app_logo_widget.dart';
 import 'package:ancora_artes/src/pages/common_widgets/custom_text_field.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
@@ -38,32 +39,7 @@ class SignUpScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       // Nome do app
-                      Image.asset('assets/logos/logoAncoraResina.png'),
-                      /* Text.rich(
-                        TextSpan(
-                          style: const TextStyle(
-                            fontSize: 30,
-                          ),
-                          children: [
-                            TextSpan(
-                              text: 'Âncora ',
-                              style: TextStyle(
-                                color: CustomColors.customBlueLight,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            TextSpan(
-                              text: 'Artes em resina',
-                              style: TextStyle(
-                                color: CustomColors.customBlueMedium,
-                                fontStyle: FontStyle.italic,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ), */
-
+                      const AppLogoWidget(),
                       // Animação da seção
                       SizedBox(
                         height: 30,

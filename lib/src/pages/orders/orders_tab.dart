@@ -1,4 +1,5 @@
 import 'package:ancora_artes/src/config/custom_colors.dart';
+import 'package:ancora_artes/src/pages/common_widgets/app_logo_widget.dart';
 import 'package:ancora_artes/src/pages/orders/components/order_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:ancora_artes/src/config/app_data.dart' as app_data;
@@ -15,9 +16,8 @@ class OrdersTab extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Image.asset(
-              'assets/logos/logoAncoraResina.png',
-              width: 100,
+            const AppLogoWidget(
+              widthLogo: 100,
             ),
             /* Icon(
               Icons.shopping_basket_outlined,
