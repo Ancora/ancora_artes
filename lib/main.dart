@@ -1,6 +1,7 @@
 import 'package:ancora_artes/src/config/custom_colors.dart';
-import 'package:ancora_artes/src/pages/splash/splash_screen.dart';
+import 'package:ancora_artes/src/pages_routes/app_pages.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,14 +13,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Âncora - Artes em Resina',
       theme: ThemeData(
         primarySwatch: CustomColors.customBlueDark,
         scaffoldBackgroundColor: CustomColors.customBlueMedium.shade600,
       ),
       debugShowCheckedModeBanner: false,
-      home: const SplashScreen(),
+      initialRoute: PagesRoutes.splashRoute,
+      getPages: AppPages.pages,
     );
   }
 }
