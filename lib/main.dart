@@ -1,9 +1,13 @@
 import 'package:ancora_artes/src/config/custom_colors.dart';
+import 'package:ancora_artes/src/pages/auth/controller/auth_controllert.dart';
 import 'package:ancora_artes/src/pages_routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main() {
+  /* Injetando o AuthController na memória */
+  Get.put(AuthController());
+
   runApp(const MyApp());
 }
 

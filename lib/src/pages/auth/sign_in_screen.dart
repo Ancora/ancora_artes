@@ -1,4 +1,5 @@
 import 'package:ancora_artes/src/config/custom_colors.dart';
+import 'package:ancora_artes/src/pages/auth/controller/auth_controllert.dart';
 import 'package:ancora_artes/src/pages/common_widgets/app_logo_widget.dart';
 import 'package:ancora_artes/src/pages/common_widgets/custom_text_field.dart';
 import 'package:ancora_artes/src/pages_routes/app_pages.dart';
@@ -113,33 +114,47 @@ class SignInScreen extends StatelessWidget {
                       // Botão para acesso
                       SizedBox(
                         height: 50,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                          ),
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              String email = emailController.text;
-                              String password = passwordController.text;
+                        child: GetX<AuthController>(
+                          builder: (authController) {
+                            return ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                              ),
+                              onPressed: authController.isLoading.value
+                                  ? null
+                                  : () {
+                                      /* Minimizar o teclado */
+                                      FocusScope.of(context).unfocus();
 
-                              print('E-mail: $email - Senha: $password');
-                            } else {
-                              print('Campos inválidos!');
-                            }
-                            /* Navigator.of(context)
-                                .pushReplacement(MaterialPageRoute(builder: (c) {
-                              return const BaseScreen();
-                            })); */
-                            //Get.offNamed(PagesRoutes.baseRoute);
+                                      if (_formKey.currentState!.validate()) {
+                                        String email = emailController.text;
+                                        String password =
+                                            passwordController.text;
+                                        authController.signIn(
+                                          email: email,
+                                          password: password,
+                                        );
+                                      } else {
+                                        print('Campos inválidos!');
+                                      }
+                                      /* Navigator.of(context)
+                                                        .pushReplacement(MaterialPageRoute(builder: (c) {
+                                                      return const BaseScreen();
+                                                    })); */
+                                      //Get.offNamed(PagesRoutes.baseRoute);
+                                    },
+                              child: authController.isLoading.value
+                                  ? const CircularProgressIndicator()
+                                  : const Text(
+                                      'Entrar',
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                            );
                           },
-                          child: const Text(
-                            'Entrar',
-                            style: TextStyle(
-                              fontSize: 20,
-                            ),
-                          ),
                         ),
                       ),
 
