@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Âncora - Artes em Resina',
       theme: ThemeData(
-        primarySwatch: CustomColors.customBlueDark,
+        primarySwatch: CustomColors.customBlueMedium,
         scaffoldBackgroundColor: CustomColors.customBlueMedium.shade600,
       ),
       debugShowCheckedModeBanner: false,
