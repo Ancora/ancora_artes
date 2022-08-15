@@ -1,7 +1,10 @@
+import 'package:ancora_artes/src/pages/auth/repository/auth_repository.dart';
 import 'package:get/get.dart';
 
 class AuthController extends GetxController {
   RxBool isLoading = false.obs;
+
+  final authRepository = AuthRepository();
 
   Future<void> signIn({
     required String email,
@@ -9,8 +12,10 @@ class AuthController extends GetxController {
   }) async {
     isLoading.value = true;
 
-    /* Delay temporário, será substituído pelo tempo de acesso normal ao backend */
-    await Future.delayed(const Duration(seconds: 2));
+    await authRepository.signIn(
+      email: email,
+      password: password,
+    );
 
     isLoading.value = false;
   }
