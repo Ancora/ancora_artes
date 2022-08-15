@@ -1,5 +1,5 @@
-import 'package:ancora_artes/src/pages/auth/sign_in_screen.dart';
-import 'package:ancora_artes/src/pages/auth/sign_up_screen.dart';
+import 'package:ancora_artes/src/pages/auth/view/sign_in_screen.dart';
+import 'package:ancora_artes/src/pages/auth/view/sign_up_screen.dart';
 import 'package:ancora_artes/src/pages/base/base_screen.dart';
 import 'package:ancora_artes/src/pages/splash/splash_screen.dart';
 import 'package:get/get.dart';
