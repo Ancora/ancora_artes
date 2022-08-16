@@ -1,5 +1,5 @@
 import 'package:ancora_artes/src/config/custom_colors.dart';
-import 'package:ancora_artes/src/pages/auth/controller/auth_controllert.dart';
+import 'package:ancora_artes/src/pages/auth/controller/auth_controller.dart';
 import 'package:ancora_artes/src/pages/common_widgets/app_logo_widget.dart';
 import 'package:ancora_artes/src/pages/common_widgets/custom_text_field.dart';
 import 'package:ancora_artes/src/pages_routes/app_pages.dart';
