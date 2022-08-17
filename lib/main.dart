@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main() {
+  /* Trecho para iniciar o app somente se todos os plugins estiverem realmente inicializados */
+  WidgetsFlutterBinding.ensureInitialized();
+
   /* Injetando o AuthController na memória */
   Get.put(AuthController());
 
