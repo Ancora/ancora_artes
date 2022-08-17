@@ -47,9 +47,11 @@ android {
         applicationId "br.art.ancora.ancora_artes"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
-        minSdkVersion flutter.minSdkVersion
+        // minSdkVersion flutter.minSdkVersion
+        minSdkVersion 18
         versionCode flutterVersionCode.toInteger()
-        targetSdkVersion flutter.targetSdkVersion
+        // targetSdkVersion flutter.targetSdkVersion
+        targetSdkVersion 30
         versionName flutterVersionName
     }
 
