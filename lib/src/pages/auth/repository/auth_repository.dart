@@ -1,4 +1,5 @@
 import 'package:ancora_artes/src/constants/endpoints.dart';
+import 'package:ancora_artes/src/models/user_model.dart';
 import 'package:ancora_artes/src/services/http_manager.dart';
 
 class AuthRepository {
@@ -21,7 +22,8 @@ class AuthRepository {
     /* Verifica se há dados em RESULT */
     if (result['result'] != null) {
       print('SignIn funcionou!');
-      print(result['result']);
+      final user = UserModel.fromJson(result['result']);
+      print(user);
     } else {
       print('SignIn NÃO funcionou!');
       print(result['error']);
