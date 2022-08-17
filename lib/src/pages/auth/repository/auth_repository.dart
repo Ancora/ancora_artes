@@ -8,6 +8,25 @@ import 'package:ancora_artes/src/services/http_manager.dart';
 class AuthRepository {
   final HttpManager _httpManager = HttpManager();
 
+  /* Validação do token */
+  Future<AuthResult> validateToken(String token) async {
+    final result = await _httpManager.restRequest(
+        url: Endpoints.validateToken,
+        method: HttpMethods.post,
+        headers: {
+          'X-Parse-Session-Token': token,
+        }
+    );
+
+    /* Verifica se há dados em RESULT */
+    if (result['result'] != null) {
+      final user = UserModel.fromJson(result['result']);
+      return AuthResult.success(user);
+    } else {
+      return AuthResult.error(auth_errors.authErrorsString(result['error']));
+    }
+  }
+
   /* Método para login */
   Future<AuthResult> signIn({
     required String email,
