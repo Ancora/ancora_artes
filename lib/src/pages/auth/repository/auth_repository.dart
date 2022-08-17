@@ -1,12 +1,15 @@
 import 'package:ancora_artes/src/constants/endpoints.dart';
 import 'package:ancora_artes/src/models/user_model.dart';
+import 'package:ancora_artes/src/pages/auth/repository/auth_errors.dart'
+    as auth_errors;
+import 'package:ancora_artes/src/pages/auth/result/auth_result.dart';
 import 'package:ancora_artes/src/services/http_manager.dart';
 
 class AuthRepository {
   final HttpManager _httpManager = HttpManager();
 
   /* Método para login */
-  Future signIn({
+  Future<AuthResult> signIn({
     required String email,
     required String password,
   }) async {
@@ -21,12 +24,10 @@ class AuthRepository {
 
     /* Verifica se há dados em RESULT */
     if (result['result'] != null) {
-      print('SignIn funcionou!');
       final user = UserModel.fromJson(result['result']);
-      print(user);
+      return AuthResult.success(user);
     } else {
-      print('SignIn NÃO funcionou!');
-      print(result['error']);
+      return AuthResult.error(auth_errors.authErrorsString(result['error']));
     }
   }
 }

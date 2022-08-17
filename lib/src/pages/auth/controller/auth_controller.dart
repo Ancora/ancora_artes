@@ -1,4 +1,5 @@
 import 'package:ancora_artes/src/pages/auth/repository/auth_repository.dart';
+import 'package:ancora_artes/src/pages/auth/result/auth_result.dart';
 import 'package:get/get.dart';
 
 class AuthController extends GetxController {
@@ -12,11 +13,20 @@ class AuthController extends GetxController {
   }) async {
     isLoading.value = true;
 
-    await authRepository.signIn(
+    AuthResult result = await authRepository.signIn(
       email: email,
       password: password,
     );
 
     isLoading.value = false;
+
+    result.when(
+      success: (user) {
+        print(user);
+      },
+      error: (message) {
+        print(message);
+      },
+    );
   }
 }
