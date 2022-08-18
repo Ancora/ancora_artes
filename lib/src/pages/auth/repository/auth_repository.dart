@@ -8,6 +8,16 @@ import 'package:ancora_artes/src/services/http_manager.dart';
 class AuthRepository {
   final HttpManager _httpManager = HttpManager();
 
+  /* Verificação se há dados em RESULT */
+  AuthResult handleUserOrError(Map<dynamic, dynamic> result) {
+    if (result['result'] != null) {
+      final user = UserModel.fromJson(result['result']);
+      return AuthResult.success(user);
+    } else {
+      return AuthResult.error(auth_errors.authErrorsString(result['error']));
+    }
+  }
+
   /* Validação do token */
   Future<AuthResult> validateToken(String token) async {
     final result = await _httpManager.restRequest(
@@ -15,16 +25,10 @@ class AuthRepository {
         method: HttpMethods.post,
         headers: {
           'X-Parse-Session-Token': token,
-        }
-    );
+        });
 
-    /* Verifica se há dados em RESULT */
-    if (result['result'] != null) {
-      final user = UserModel.fromJson(result['result']);
-      return AuthResult.success(user);
-    } else {
-      return AuthResult.error(auth_errors.authErrorsString(result['error']));
-    }
+    /* Retorno da verificação de dados em RESULT */
+    return handleUserOrError(result);
   }
 
   /* Método para login */
@@ -41,12 +45,19 @@ class AuthRepository {
       },
     );
 
-    /* Verifica se há dados em RESULT */
-    if (result['result'] != null) {
-      final user = UserModel.fromJson(result['result']);
-      return AuthResult.success(user);
-    } else {
-      return AuthResult.error(auth_errors.authErrorsString(result['error']));
-    }
+    /* Retorno da verificação de dados em RESULT */
+    return handleUserOrError(result);
+  }
+
+  /* Método para cadastro de novo usuário */
+  Future<AuthResult> signUp(UserModel user) async {
+    final result = await _httpManager.restRequest(
+      url: Endpoints.signup,
+      method: HttpMethods.post,
+      body: user.toJson(),
+    );
+
+    /* Retorno da verificação de dados em RESULT */
+    return handleUserOrError(result);
   }
 }

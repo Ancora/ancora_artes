@@ -17,7 +17,6 @@ class AuthController extends GetxController {
   /* @override
   void onInit() {
     super.onInit();
-
     validateToken();
   } */
 
@@ -68,7 +67,7 @@ class AuthController extends GetxController {
     Get.offAllNamed(PagesRoutes.baseRoute);
   }
 
-  /* Login */
+  /* Login (SIGNIN) */
   Future<void> signIn({
     required String email,
     required String password,
@@ -87,6 +86,28 @@ class AuthController extends GetxController {
         /* this.user refere-se ao objeto da classe; user é do retorno em success */
         this.user = user;
 
+        saveTokenAndProceedToBase();
+      },
+      error: (message) {
+        utilsServices.showToast(
+          message: message,
+          isError: true,
+        );
+      },
+    );
+  }
+
+  /* Cadastro de novo usuário (SIGNUP) */
+  Future<void> signUp() async {
+    isLoading.value = true;
+
+    AuthResult result = await authRepository.signUp(user);
+
+    isLoading.value = false;
+
+    result.when(
+      success: (user) {
+        this.user = user;
         saveTokenAndProceedToBase();
       },
       error: (message) {

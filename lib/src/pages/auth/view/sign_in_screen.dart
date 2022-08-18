@@ -3,6 +3,7 @@ import 'package:ancora_artes/src/pages/auth/controller/auth_controller.dart';
 import 'package:ancora_artes/src/pages/common_widgets/app_logo_widget.dart';
 import 'package:ancora_artes/src/pages/common_widgets/custom_text_field.dart';
 import 'package:ancora_artes/src/pages_routes/app_pages.dart';
+import 'package:ancora_artes/src/services/validators.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -81,15 +82,7 @@ class SignInScreen extends StatelessWidget {
                         controller: emailController,
                         icon: Icons.email_outlined,
                         label: 'E-mail',
-                        validator: (email) {
-                          if (email == null || email.isEmpty) {
-                            return 'Digite seu E-mail!';
-                          }
-
-                          if (!email.isEmail) return 'Digite um E-mail válido!';
-
-                          return null;
-                        },
+                        validator: emailValidator,
                       ),
 
                       // Senha
@@ -98,17 +91,7 @@ class SignInScreen extends StatelessWidget {
                         icon: Icons.lock_outline,
                         label: 'Senha',
                         isSecret: true,
-                        validator: (password) {
-                          if (password == null || password.isEmpty) {
-                            return 'Digite sua Senha!';
-                          }
-
-                          if (password.length < 8) {
-                            return 'A senha deve ter 8 caracteres ou mais!';
-                          }
-
-                          return null;
-                        },
+                        validator: passwordValidator,
                       ),
 
                       // Botão para acesso
@@ -136,14 +119,7 @@ class SignInScreen extends StatelessWidget {
                                           email: email,
                                           password: password,
                                         );
-                                      } else {
-                                        print('Campos inválidos!');
                                       }
-                                      /* Navigator.of(context)
-                                                        .pushReplacement(MaterialPageRoute(builder: (c) {
-                                                      return const BaseScreen();
-                                                    })); */
-                                      //Get.offNamed(PagesRoutes.baseRoute);
                                     },
                               child: authController.isLoading.value
                                   ? const CircularProgressIndicator()

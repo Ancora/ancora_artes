@@ -1,8 +1,10 @@
 import 'package:ancora_artes/src/config/custom_colors.dart';
+import 'package:ancora_artes/src/pages/auth/controller/auth_controller.dart';
 import 'package:ancora_artes/src/pages/common_widgets/app_logo_widget.dart';
 import 'package:ancora_artes/src/pages/common_widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:ancora_artes/src/config/app_data.dart' as app_data;
+import 'package:get/get.dart';
 
 class ProfileTab extends StatefulWidget {
   const ProfileTab({super.key});
@@ -12,6 +14,8 @@ class ProfileTab extends StatefulWidget {
 }
 
 class _ProfileTabState extends State<ProfileTab> {
+  final authController = Get.find<AuthController>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +44,9 @@ class _ProfileTabState extends State<ProfileTab> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              authController.signOut();
+            },
             icon: Icon(
               Icons.logout_outlined,
               color: CustomColors.customBlueLight,
